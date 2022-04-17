@@ -1,0 +1,165 @@
+swagger: '2.0'
+info:
+  description: 'Binar chapter 8 challenge API Docs'
+  version: '1.0.0'
+  title: 'Binar Swagger'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:4000'
+basePath: '/api/v1'
+
+schemes:
+  - 'http'
+
+paths:
+  /players:
+    get:
+      tags:
+        - 'Players'
+      summary: Get players data
+      description: Endpoint to get all players data
+      responses:
+        200:
+          description: Get success
+        400:
+          description: Get failed
+        500:
+          description: Internal server error
+        401:
+          description: Unauthorized
+    post:
+      tags:
+        - 'Players'
+      summary: Create new players
+      description: Endpoint to create new
+      parameters:
+        - in: 'body'
+          name: 'body'
+          required: true
+          schema:
+            type: object
+            required: true
+            properties:
+              username:
+                type: 'string'
+              password:
+                type: 'string'
+              email:
+                type: 'string'
+              experience:
+                type: integer
+              lvl:
+                type: integer
+      responses:
+        200:
+          description: Get success
+        400:
+          description: Get failed
+        500:
+          description: Internal server error
+        401:
+          description: Unauthorized
+
+  /players/{id}:
+    get:
+      tags:
+        - 'Players'
+      summary: Get player data by ID
+      description: Endpoint untuk get player data by id
+      parameters:
+        - in: 'path'
+          name: 'id'
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Get success
+        400:
+          description: Get failed
+        500:
+          description: Internal server error
+        401:
+          description: Unauthorized
+    put:
+      tags:
+        - 'Players'
+      summary: Update player by id
+      description: Endpoint to update player by id
+      parameters:
+        - in: 'path'
+          name: 'id'
+          required: true
+        - in: 'body'
+          name: 'body'
+          required: false
+          schema:
+            type: object
+            required: true
+            properties:
+              username:
+                type: 'string'
+              password:
+                type: 'string'
+              email:
+                type: 'string'
+              experience:
+                type: integer
+              lvl:
+                type: integer
+      responses:
+        200:
+          description: Put success
+        400:
+          description: Put failed
+        500:
+          description: Internal server error
+        401:
+          description: Unauthorized
+    delete:
+      tags:
+        - 'Players'
+      summary: Delete player by id
+      description: Endpoint to delete player by id
+      parameters:
+        - in: 'path'
+          name: 'id'
+          required: true
+      responses:
+        200:
+          description: Delete success
+        400:
+          description: Delete failed
+        500:
+          description: Internal server error
+        401:
+          description: Unauthorized
+  /players/exp/{id}:
+    post:
+      tags:
+        - 'Players'
+      summary: Update experience player by id
+      description: Endpoint to update experience player by id
+      parameters:
+        - in: 'path'
+          name: 'id'
+          required: true
+        - in: 'body'
+          name: 'body'
+          required: true
+          schema:
+            type: object
+            required: true
+            properties:
+              exp:
+                type: integer
+      responses:
+        200:
+          description: Update success
+        400:
+          description: Update failed
+        500:
+          description: Internal server error
+        401:
+          description: Unauthorized
